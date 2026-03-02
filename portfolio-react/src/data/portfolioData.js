@@ -18,9 +18,8 @@ const portfolioData = {
       position: "Software Engineer",
       dateRange: "July 2024 – Present",
       responsibilities: [
-        "🚀 Building and maintaining Insurely Mobile App (Android & iOS) with .NET WCF, C#, REST APIs, .NET Core, MSSQL",
-        "📱 Managing app deployments on Google Play Store and Apple App Store",
-        "🔧 Working with QT Framework, C++, Python, and Java for cross-platform solutions"
+        "Insurely Mobile Application Android and IOS (.Net WCF C# Rest APIs .Netcore, MSSQL, QT Framework, C++, Python, Java)",
+        "Managing Google Playstore and Apple Appstore Application Version Updates"
       ]
     },
     {
@@ -29,9 +28,7 @@ const portfolioData = {
       position: ".NET Developer",
       dateRange: "March 2023 – July 2024",
       responsibilities: [
-        "🔐 Implemented OTP authentication and secure account management",
-        "📊 Built interactive dashboards and email notification systems",
-        "⚙️ Developed with .NET WCF, C#, REST APIs, MSSQL, QT Framework, C++, Python"
+        "Insurely Mobile Application - OTP authentication, account management, dashboard, email notification (.Net WCF C# Rest APIs, MSSQL, QT Framework, C++, Python)"
       ]
     },
     {
@@ -40,12 +37,12 @@ const portfolioData = {
       position: "Software Developer / I.T Consultant",
       dateRange: "January 2021 – March 2023",
       responsibilities: [
-        "🎓 Training Management System with certification (ASP.NET MVC C#, MySQL)",
-        "👥 HR Hiring System and Training Management",
-        "⏰ NFC Timekeeping System (ASP.NET XAML, C#, MySQL)",
-        "🦠 Covid-19 Monitoring System",
-        "📦 Spare Parts Management System",
-        "📋 Compliance Document Requirements Monitoring (Java, Apache Tomcat, MySQL)"
+        "Training Management System with certification (ASP.Net MVC C#, MySQL)",
+        "HR Hiring System and Training Management (ASP.Net MVC C#, MySQL)",
+        "NFC Timekeeping System (ASP.Net XAML, C#, MySQL)",
+        "Covid19 Monitoring System (ASP.Net XAML, C#, MySQL)",
+        "Spare parts Management System (ASP.Net MVC C#, MySQL)",
+        "Compliance Document Requirements Monitoring (Java, Apache Tomcat, MySQL)"
       ]
     }
   ],
@@ -74,25 +71,25 @@ const portfolioData = {
   
   // technologies I work with
   skills: [
-    { name: "ASP.Net MVC C#, VB.net, XAML, WPF", icon: "💻" },
-    { name: ".Net Core, Rest APIs, WCF", icon: "🔌" },
-    { name: "Java, C++, Python", icon: "🐍" },
-    { name: "JavaScript, PHP, CSS, HTML", icon: "🌐" },
-    { name: "MySQL, MSSQL, Stored Procedures", icon: "🗄️" },
-    { name: "Android Studio, QT Framework", icon: "📱" },
-    { name: "Github CI/CD", icon: "🚀" },
-    { name: "Adobe Photoshop, Illustrator, After Effects", icon: "🎨" },
-    { name: "Microsoft Office Suite", icon: "📊" },
-    { name: "PC Troubleshooting, Networking", icon: "🔧" }
+    "ASP.Net MVC C#, VB.net, XAML, WPF",
+    ".Net Core, Rest APIs, WCF",
+    "Java, C++, Python",
+    "JavaScript, PHP, CSS, HTML",
+    "MySQL, MSSQL, Stored Procedures",
+    "Android Studio, QT Framework",
+    "Github CI/CD",
+    "Adobe Photoshop, Illustrator, After Effects",
+    "Microsoft Office Suite",
+    "PC Troubleshooting, Networking"
   ],
   
   // freelance work I've done
   freelanceProjects: [
-    "💊 Vidar and Marti-lian Pharmacy Inventory and POS (C#)",
-    "🛒 Freddie And Lenie Grocery Store Inventory POS (C# & PHP)",
-    "🍽️ Ralphs Joy Restaurant POS System (VB.net)",
-    "📦 JSU Trading POS System (VB.net)",
-    "🏪 Neri Ann's Whole Sale Grocery POS System (C# & PHP)"
+    "Vidar and Marti-lian Pharmacy Inventory and POS (C#)",
+    "Freddie And Lenie Grocery Store Inventory POS (C# & PHP)",
+    "Ralphs Joy Restaurant POS System (VB.net)",
+    "JSU Trading POS System (VB.net)",
+    "Neri Ann's Whole Sale Grocery POS System (C# & PHP)"
   ]
 };
 
