@@ -32,11 +32,11 @@ See `portfolio-react/DEPLOYMENT.md` for detailed deployment instructions.
 portfolio-react/
 ├── public/
 │   ├── index.html
-│   └── profile.jpg          # Your profile photo
+│   └── profile.jpg          # Profile Photo
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.js        # Navigation bar
-│   │   ├── Header.js        # Hero section
+│   │   ├── Header.js        # Headrer section
 │   │   ├── WorkExperience.js
 │   │   ├── Education.js
 │   │   ├── Skills.js
