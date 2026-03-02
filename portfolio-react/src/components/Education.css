@@ -1,0 +1,42 @@
+  .education .education-item {
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.education .education-item:last-child {
+  border-bottom: none;
+}
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.institution {
+  color: #f1f5f9;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.course {
+  font-size: 1.1rem;
+  color: #3b82f6;
+  font-weight: 600;
+  margin: 5px 0;
+}
+
+.level {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .edu-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
