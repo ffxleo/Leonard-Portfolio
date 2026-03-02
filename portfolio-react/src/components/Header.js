@@ -29,7 +29,7 @@ function Header({ person }) {
         <div className="hero-right">
           <div className="profile-image-container">
             <img 
-              src="/profile.jpg" 
+              src={process.env.PUBLIC_URL + "/profile.jpg"} 
               alt={`${person.name} - Software Engineer`} 
               className="profile-image" />
           </div>
