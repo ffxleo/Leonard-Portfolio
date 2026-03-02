@@ -6,6 +6,7 @@ import WorkExperience from './components/WorkExperience';
 import Education from './components/Education';
 import Skills from './components/Skills';
 import FreelanceProjects from './components/FreelanceProjects';
+import Footer from './components/Footer';
 import portfolioData from './data/portfolioData';
 
 function App() {
@@ -33,6 +34,8 @@ function App() {
         </section>
 
       </div>
+      
+      <Footer />
     </div>
   );
 }
