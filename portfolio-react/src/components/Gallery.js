@@ -6,12 +6,12 @@ function Gallery() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const galleryImages = [
-    { id: 1, src: '/spareparts/login.png', caption: 'Login Page - Secure Authentication' },
-    { id: 2, src: '/spareparts/dashboard.png', caption: 'Dashboard - Budget vs Actual Cost Analysis' },
-    { id: 3, src: '/spareparts/inventory.png', caption: 'Inventory Management - Product List View' },
-    { id: 4, src: '/spareparts/details.png', caption: 'Product Details - Comprehensive Item Information' },
-    { id: 5, src: '/spareparts/additem.png', caption: 'Add New Item - Inventory Registration Form' },
-    { id: 6, src: '/spareparts/purchase.png', caption: 'Purchase Order Management' }
+    { id: 1, src: '/Spareparts/login.png', caption: 'Login Page - Secure Authentication' },
+    { id: 2, src: '/Spareparts/dashboard.png', caption: 'Dashboard - Budget vs Actual Cost Analysis' },
+    { id: 3, src: '/Spareparts/inventory.png', caption: 'Inventory Management - Product List View' },
+    { id: 4, src: '/Spareparts/details.png', caption: 'Product Details - Comprehensive Item Information' },
+    { id: 5, src: '/Spareparts/additem.png', caption: 'Add New Item - Inventory Registration Form' },
+    { id: 6, src: '/Spareparts/purchase.png', caption: 'Purchase Order Management' }
   ];
 
   return (
