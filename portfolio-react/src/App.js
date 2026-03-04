@@ -6,6 +6,7 @@ import WorkExperience from './components/WorkExperience';
 import Education from './components/Education';
 import Skills from './components/Skills';
 import FreelanceProjects from './components/FreelanceProjects';
+import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 import portfolioData from './data/portfolioData';
 
@@ -31,6 +32,11 @@ function App() {
         {/* projects I've worked on */}
         <section id="projects">
           <FreelanceProjects projects={portfolioData.freelanceProjects} />
+        </section>
+
+        {/* gallery section */}
+        <section id="gallery">
+          <Gallery />
         </section>
 
       </div>
