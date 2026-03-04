@@ -22,7 +22,7 @@ function Header({ person }) {
           </p>
           
           <div className="contact-info">
-            <p>Cell #: {person.phone}</p>
+            <p>Mobile Number: {person.phone}</p>
             <p>Email: {person.email}</p>
           </div>
           
