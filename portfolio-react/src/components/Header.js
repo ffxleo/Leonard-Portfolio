@@ -21,6 +21,11 @@ function Header({ person }) {
             I strive to build immersive and beautiful applications through carefully crafted code and user-centric design.
           </p>
           
+          <div className="contact-info">
+            <p>Cell #: {person.phone}</p>
+            <p>Email: {person.email}</p>
+          </div>
+          
           <button className="cta-button" onClick={handleContactClick}>
             Say Hello!
           </button>
