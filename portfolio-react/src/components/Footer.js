@@ -10,6 +10,7 @@ function Footer() {
         <div className="footer-tech">
           <p className="footer-title">Built With</p>
           <div className="tech-stack">
+            <span className="tech-item">Java</span>
             <span className="tech-item">React</span>
             <span className="tech-item">JavaScript</span>
             <span className="tech-item">CSS3</span>
