@@ -36,7 +36,10 @@ function App() {
 
         {/* gallery section */}
         <section id="gallery">
-          <Gallery />
+          <div className="section">
+            <h2 className="section-title">Project Gallery</h2>
+            <Gallery />
+          </div>
         </section>
 
       </div>
