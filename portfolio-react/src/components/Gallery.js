@@ -6,11 +6,12 @@ function Gallery() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const galleryImages = [
-    { id: 1, caption: 'Login Page - Secure Authentication' },
-    { id: 2, caption: 'Dashboard - Budget vs Actual Cost Analysis' },
-    { id: 3, caption: 'Inventory Management - Product List View' },
-    { id: 4, caption: 'Product Details - Comprehensive Item Information' },
-    { id: 5, caption: 'Add New Item - Inventory Registration Form' }
+    { id: 1, src: '/spareparts/login.png', caption: 'Login Page - Secure Authentication' },
+    { id: 2, src: '/spareparts/dashboard.png', caption: 'Dashboard - Budget vs Actual Cost Analysis' },
+    { id: 3, src: '/spareparts/inventory.png', caption: 'Inventory Management - Product List View' },
+    { id: 4, src: '/spareparts/details.png', caption: 'Product Details - Comprehensive Item Information' },
+    { id: 5, src: '/spareparts/additem.png', caption: 'Add New Item - Inventory Registration Form' },
+    { id: 6, src: '/spareparts/purchase.png', caption: 'Purchase Order Management' }
   ];
 
   return (
@@ -40,7 +41,14 @@ function Gallery() {
               className="gallery-item"
               onClick={() => setSelectedImage(item)}>
               <div className="gallery-image">
-                Image {item.id}
+                <img 
+                  src={process.env.PUBLIC_URL + item.src} 
+                  alt={item.caption}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = `<span>Image ${item.id}</span>`;
+                  }}
+                />
               </div>
               <div className="gallery-caption">{item.caption}</div>
             </div>
@@ -54,11 +62,14 @@ function Gallery() {
             <button className="modal-close" onClick={() => setSelectedImage(null)}>
               Close
             </button>
-            <div className="modal-image">
-              <p style={{ color: '#94a3b8', textAlign: 'center' }}>
-                {selectedImage.caption}
-              </p>
-            </div>
+            <img 
+              src={process.env.PUBLIC_URL + selectedImage.src} 
+              alt={selectedImage.caption}
+              className="modal-image"
+            />
+            <p style={{ color: '#94a3b8', textAlign: 'center', marginTop: '15px' }}>
+              {selectedImage.caption}
+            </p>
           </div>
         </div>
       )}
