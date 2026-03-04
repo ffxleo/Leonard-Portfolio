@@ -7,6 +7,7 @@ import Education from './components/Education';
 import Skills from './components/Skills';
 import FreelanceProjects from './components/FreelanceProjects';
 import Gallery from './components/Gallery';
+import GalleryPOS from './components/GalleryPOS';
 import Footer from './components/Footer';
 import portfolioData from './data/portfolioData';
 
@@ -39,6 +40,7 @@ function App() {
           <div className="section">
             <h2 className="section-title">Project Gallery</h2>
             <Gallery />
+            <GalleryPOS />
           </div>
         </section>
 
