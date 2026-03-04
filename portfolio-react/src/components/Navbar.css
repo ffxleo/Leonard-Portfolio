@@ -93,12 +93,13 @@
   border: none;
   cursor: pointer;
   padding: 5px;
+  z-index: 1001;
 }
 
 .menu-toggle span {
   width: 25px;
   height: 3px;
-  background: #2c3e50;
+  background: #f1f5f9;
   margin: 3px 0;
   transition: 0.3s;
   border-radius: 3px;
@@ -114,14 +115,16 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(10px);
     flex-direction: column;
     gap: 0;
-    padding: 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
   }
 
   .navbar-menu.active {
@@ -129,12 +132,23 @@
   }
 
   .navbar-menu li {
-    padding: 10px 0;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 0;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
   }
 
   .navbar-menu li:last-child {
     border-bottom: none;
+  }
+
+  .navbar-menu li a {
+    display: block;
+    padding: 20px;
+    color: #cbd5e1;
+  }
+
+  .navbar-menu li a:hover {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
   }
 
   .menu-toggle.active span:nth-child(1) {
