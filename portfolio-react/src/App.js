@@ -8,6 +8,7 @@ import Skills from './components/Skills';
 import FreelanceProjects from './components/FreelanceProjects';
 import Gallery from './components/Gallery';
 import GalleryPOS from './components/GalleryPOS';
+import GalleryMobile from './components/GalleryMobile';
 import Footer from './components/Footer';
 import portfolioData from './data/portfolioData';
 
@@ -41,6 +42,7 @@ function App() {
             <h2 className="section-title">Project Gallery</h2>
             <Gallery />
             <GalleryPOS />
+            <GalleryMobile />
           </div>
         </section>
 
