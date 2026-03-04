@@ -40,9 +40,9 @@ function App() {
         <section id="gallery">
           <div className="section">
             <h2 className="section-title">Project Gallery</h2>
+            <GalleryMobile />
             <Gallery />
             <GalleryPOS />
-            <GalleryMobile />
           </div>
         </section>
 
