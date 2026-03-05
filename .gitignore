@@ -5,6 +5,7 @@ portfolio-react/node_modules/
 # Build output
 portfolio-react/build/
 out/
+target/
 
 # IDE files
 .idea/
