@@ -3,6 +3,7 @@ import './Gallery.css';
 
 function GalleryTimekeeping() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const galleryImages = [
@@ -12,6 +13,23 @@ function GalleryTimekeeping() {
     { id: 4, src: '/timekeeping/timekeeping-invalid.png', caption: 'Invalid Card - Error Handling' },
     { id: 5, src: '/timekeeping/system-testing-deployment-live.jpg', caption: 'System Testing & Deployment' }
   ];
+
+  const openModal = (item, index) => {
+    setSelectedImage(item);
+    setCurrentIndex(index);
+  };
+
+  const nextImage = () => {
+    const newIndex = (currentIndex + 1) % galleryImages.length;
+    setCurrentIndex(newIndex);
+    setSelectedImage(galleryImages[newIndex]);
+  };
+
+  const prevImage = () => {
+    const newIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    setCurrentIndex(newIndex);
+    setSelectedImage(galleryImages[newIndex]);
+  };
 
   return (
     <div className="gallery-project">
@@ -35,11 +53,11 @@ function GalleryTimekeeping() {
 
       {isExpanded && (
         <div className="gallery-grid">
-          {galleryImages.map((item) => (
+          {galleryImages.map((item, index) => (
             <div 
               key={item.id} 
               className="gallery-item"
-              onClick={() => setSelectedImage(item)}>
+              onClick={() => openModal(item, index)}>
               <div className="gallery-image">
                 <img 
                   src={process.env.PUBLIC_URL + item.src} 
@@ -60,15 +78,24 @@ function GalleryTimekeeping() {
         <div className="modal-overlay" onClick={() => setSelectedImage(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setSelectedImage(null)}>
-              Close
+              ✕
+            </button>
+            <button className="modal-nav modal-prev" onClick={prevImage}>
+              ‹
+            </button>
+            <button className="modal-nav modal-next" onClick={nextImage}>
+              ›
             </button>
             <img 
               src={process.env.PUBLIC_URL + selectedImage.src} 
               alt={selectedImage.caption}
               className="modal-image"
             />
-            <p style={{ color: '#94a3b8', textAlign: 'center', marginTop: '15px' }}>
+            <p className="modal-caption">
               {selectedImage.caption}
+            </p>
+            <p className="modal-counter">
+              {currentIndex + 1} / {galleryImages.length}
             </p>
           </div>
         </div>
