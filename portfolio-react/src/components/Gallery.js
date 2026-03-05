@@ -77,16 +77,16 @@ function Gallery() {
 
       {selectedImage && (
         <div className="modal-overlay" onClick={() => setSelectedImage(null)}>
+          <button className="modal-close" onClick={() => setSelectedImage(null)}>
+            ✕
+          </button>
+          <button className="modal-nav modal-prev" onClick={(e) => { e.stopPropagation(); prevImage(); }}>
+            ‹
+          </button>
+          <button className="modal-nav modal-next" onClick={(e) => { e.stopPropagation(); nextImage(); }}>
+            ›
+          </button>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setSelectedImage(null)}>
-              ✕
-            </button>
-            <button className="modal-nav modal-prev" onClick={prevImage}>
-              ‹
-            </button>
-            <button className="modal-nav modal-next" onClick={nextImage}>
-              ›
-            </button>
             <img 
               src={process.env.PUBLIC_URL + selectedImage.src} 
               alt={selectedImage.caption}
