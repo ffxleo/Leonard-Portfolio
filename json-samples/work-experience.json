@@ -1,0 +1,12 @@
+{
+  "company": "Tech Innovations Inc.",
+  "location": "Makati, Metro Manila",
+  "position": "Senior Software Engineer",
+  "dateRange": "January 2026 – Present",
+  "responsibilities": [
+    "Lead development team of 5 developers",
+    "Design and implement microservices architecture using Spring Boot",
+    "Code review and mentoring junior developers",
+    "Implement CI/CD pipelines with Jenkins and Docker"
+  ]
+}

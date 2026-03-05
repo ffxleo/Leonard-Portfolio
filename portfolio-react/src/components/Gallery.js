@@ -11,7 +11,8 @@ function Gallery() {
     { id: 3, src: '/Spareparts/inventory.png', caption: 'Inventory Management - Product List View' },
     { id: 4, src: '/Spareparts/details.png', caption: 'Product Details - Comprehensive Item Information' },
     { id: 5, src: '/Spareparts/additem.png', caption: 'Add New Item - Inventory Registration Form' },
-    { id: 6, src: '/Spareparts/purchase.png', caption: 'Purchase Order Management' }
+    { id: 6, src: '/Spareparts/purchase.png', caption: 'Purchase Order Management' },
+    { id: 7, src: '/Spareparts/deployment.jpg', caption: 'System Deployment - Live Environment' }
   ];
 
   return (

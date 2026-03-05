@@ -1,34 +1,30 @@
 import React, { useState } from 'react';
 import './Gallery.css';
 
-function GalleryPOS() {
+function GalleryTimekeeping() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const galleryImages = [
-    { id: 1, src: '/pos/login.png', caption: 'Login Page - User Authentication' },
-    { id: 2, src: '/pos/transaction.png', caption: 'Point of Sale - Transaction Processing' },
-    { id: 3, src: '/pos/inventory.png', caption: 'Inventory Management' },
-    { id: 4, src: '/pos/purchase.png', caption: 'Purchase Order Management' },
-    { id: 5, src: '/pos/login-resto.png', caption: 'Restaurant POS - Login' },
-    { id: 6, src: '/pos/dashboard-resto.png', caption: 'Restaurant POS - Dashboard' },
-    { id: 7, src: '/pos/pos-resto.png', caption: 'Restaurant POS - Order Management' },
-    { id: 8, src: '/pos/deploy1.jpg', caption: 'System Deployment - Setup' },
-    { id: 9, src: '/pos/deploy2.jpg', caption: 'System Deployment - Configuration' },
-    { id: 10, src: '/pos/deploy3.jpg', caption: 'System Deployment - Testing' },
-    { id: 11, src: '/pos/deploy4.jpg', caption: 'System Deployment - Live' }
+    { id: 1, src: '/timekeeping/timekeeping.png', caption: 'Timekeeping System - Main Interface' },
+    { id: 2, src: '/timekeeping/timekeeping-in.png', caption: 'Time In - NFC Card Scan' },
+    { id: 3, src: '/timekeeping/timekeeping-out.png', caption: 'Time Out - NFC Card Scan' },
+    { id: 4, src: '/timekeeping/timekeeping-invalid.png', caption: 'Invalid Card - Error Handling' },
+    { id: 5, src: '/timekeeping/system-testing-deployment-live.jpg', caption: 'System Testing & Deployment' }
   ];
 
   return (
     <div className="gallery-project">
       <div className="gallery-header" onClick={() => setIsExpanded(!isExpanded)}>
         <div className="gallery-header-content">
-          <h3 className="gallery-title">POS and Inventory System</h3>
-          <p className="gallery-subtitle">Point of Sale & Stock Management Solution</p>
+          <h3 className="gallery-title">Timekeeping NFC Reader</h3>
+          <p className="gallery-subtitle">NFC ID-Based Employee Time Tracking System</p>
           <div className="tech-tags">
+            <span className="tech-tag">WPF</span>
             <span className="tech-tag">C#</span>
-            <span className="tech-tag">VB.NET</span>
-            <span className="tech-tag">WinForms</span>
+            <span className="tech-tag">XAML</span>
+            <span className="tech-tag">Assembly</span>
+            <span className="tech-tag">HEX</span>
             <span className="tech-tag">MySQL</span>
           </div>
         </div>
@@ -81,4 +77,4 @@ function GalleryPOS() {
   );
 }
 
-export default GalleryPOS;
+export default GalleryTimekeeping;

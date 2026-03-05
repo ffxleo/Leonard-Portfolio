@@ -9,6 +9,7 @@ import FreelanceProjects from './components/FreelanceProjects';
 import Gallery from './components/Gallery';
 import GalleryPOS from './components/GalleryPOS';
 import GalleryMobile from './components/GalleryMobile';
+import GalleryTimekeeping from './components/GalleryTimekeeping';
 import Footer from './components/Footer';
 import portfolioData from './data/portfolioData';
 
@@ -43,6 +44,7 @@ function App() {
             <GalleryMobile />
             <Gallery />
             <GalleryPOS />
+            <GalleryTimekeeping />
           </div>
         </section>
 
