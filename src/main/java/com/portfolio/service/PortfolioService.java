@@ -82,26 +82,26 @@ public class PortfolioService {
     
     public List<String> getSkills() {
         return Arrays.asList(
-            "ASP.Net MVC C#, VB.net, XAML, WPF",
-            ".Net Core, Rest APIs, WCF",
-            "Java, C++, Python",
-            "JavaScript, PHP, CSS, HTML",
-            "MySQL, MSSQL, Stored Procedures",
-            "Android Studio, QT Framework",
-            "Github CI/CD",
-            "Adobe Photoshop, Illustrator, After Effects",
-            "Microsoft Office Suite",
-            "PC Troubleshooting, Networking"
+                "ASP.Net MVC C#, VB.net, XAML, WPF, Winforms",
+                ".Net Core, Rest APIs, WCF, Entity Framework",
+                "Java, Java Springboot, C++, Python",
+                "ReactJS, JavaScript, PHP, CSS3, HTML5",
+                "MySQL, MSSQL, Stored Procedures",
+                "Android Studio, QT Framework",
+                "Bitbucket, Github, CI/CD, Docker",
+                "Adobe Photoshop, Illustrator, After Effects, Canva",
+                "Microsoft Office Suite",
+                "PC Troubleshooting, Networking"
         );
     }
     
     public List<String> getProjects() {
         return Arrays.asList(
-            "Vidar and Marti-lian Pharmacy Inventory and POS (C#)",
-            "Freddie And Lenie Grocery Store Inventory POS (C# & PHP)",
-            "Ralphs Joy Restaurant POS System (VB.net)",
-            "JSU Trading POS System (VB.net)",
-            "Neri Ann's Whole Sale Grocery POS System (C# & PHP)"
+                "Vidar and Marti-lian Pharmacy Inventory and POS (.Net C#, PHP Javascript, MySql)",
+                "Freddie And Lenie Grocery Store Inventory POS (.Net C#, PHP, Javascript, MySql)",
+                "Ralphs Joy Restaurant POS System (VB.net, Winforms, MySql)",
+                "Boyong and Julieann Mini Groceries (.Net C#, PHP, Javascript, MySql)",
+                "Neri Ann's Whole Sale Grocery POS System (.Net C#, PHP, Javascript, MySql)"
         );
     }
     

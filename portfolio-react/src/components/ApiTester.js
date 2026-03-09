@@ -95,7 +95,7 @@ function ApiTester() {
 
       <div className="api-buttons">
         <button onClick={testHealth} disabled={loading} className="api-btn health-btn">
-          Health Check
+          Server Check
         </button>
         <button onClick={testLogin} disabled={loading} className="api-btn login-btn">
           Login (Get Token)
