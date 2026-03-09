@@ -28,7 +28,7 @@ const portfolioData = {
       position: ".NET Developer",
       dateRange: "March 2023 – July 2024",
       responsibilities: [
-        "Insurely Mobile Application - OTP authentication, account management, dashboard, email notification (.Net WCF C# Rest APIs, MSSQL, QT Framework, C++, Python)"
+        "Insurely Mobile Application (Android Development and Internal/External API'S) - OTP authentication, account management, dashboard, email notification (.Net WCF C# Rest APIs, MSSQL, QT Framework, C++, Python)"
       ]
     },
     {
@@ -71,25 +71,25 @@ const portfolioData = {
   
   // technologies I work with
   skills: [
-    "ASP.Net MVC C#, VB.net, XAML, WPF",
-    ".Net Core, Rest APIs, WCF",
-    "Java, C++, Python",
-    "JavaScript, PHP, CSS, HTML",
+    "ASP.Net MVC C#, VB.net, XAML, WPF, Winforms",
+    ".Net Core, Rest APIs, WCF, Entity Framework",
+    "Java, Java Springboot, C++, Python",
+    "ReactJS, JavaScript, PHP, CSS3, HTML5",
     "MySQL, MSSQL, Stored Procedures",
     "Android Studio, QT Framework",
-    "Github CI/CD",
-    "Adobe Photoshop, Illustrator, After Effects",
+    "Bitbucket, Github, CI/CD, Docker",
+    "Adobe Photoshop, Illustrator, After Effects, Canva",
     "Microsoft Office Suite",
     "PC Troubleshooting, Networking"
   ],
   
   // freelance work I've done
   freelanceProjects: [
-    "Vidar and Marti-lian Pharmacy Inventory and POS (C#)",
-    "Freddie And Lenie Grocery Store Inventory POS (C# & PHP)",
-    "Ralphs Joy Restaurant POS System (VB.net)",
-    "JSU Trading POS System (VB.net)",
-    "Neri Ann's Whole Sale Grocery POS System (C# & PHP)"
+    "Vidar and Marti-lian Pharmacy Inventory and POS (.Net C#, PHP Javascript, MySql)",
+    "Freddie And Lenie Grocery Store Inventory POS (.Net C#, PHP, Javascript, MySql)",
+    "Ralphs Joy Restaurant POS System (VB.net, Winforms, MySql)",
+    "Boyong and Julieann Mini Groceries (.Net C#, PHP, Javascript, MySql)",
+    "Neri Ann's Whole Sale Grocery POS System (.Net C#, PHP, Javascript, MySql)"
   ]
 };
 

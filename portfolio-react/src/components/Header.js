@@ -17,7 +17,7 @@ function Header({ person }) {
           <h2 className="name">{person.name}</h2>
           
           <p className="tagline">
-            I'm a <span className="highlight">Software Engineer</span> and <span className="highlight">Full-stack Developer</span> based in Laguna, Philippines. 
+            I'm a <span className="highlight">Software Engineer</span> and <span className="highlight">Full-stack Developer</span> based in Cavite and Laguna, Philippines. 
             I strive to build immersive and beautiful applications through carefully crafted code and user-centric design.
           </p>
           
@@ -36,7 +36,9 @@ function Header({ person }) {
             <img 
               src={process.env.PUBLIC_URL + "/profile.jpg"} 
               alt={`${person.name} - Software Engineer`} 
-              className="profile-image" />
+              className="profile-image"
+              onContextMenu={(e) => e.preventDefault()}
+              draggable="false" />
           </div>
         </div>
 

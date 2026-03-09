@@ -25,9 +25,13 @@ function App() {
       
       <div className="container">
         
-        {/* about section with work experience, education and skills */}
+        {/* about section with work experience */}
         <section id="about">
           <WorkExperience workHistory={portfolioData.workHistory} />
+        </section>
+
+        {/* education section */}
+        <section id="education">
           <Education education={portfolioData.education} />
           <Skills skills={portfolioData.skills} />
         </section>

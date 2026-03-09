@@ -32,10 +32,11 @@ function Navbar() {
         </button>
 
         <ul className={`navbar-menu ${isMobileMenuOpen ? 'active' : ''}`}>
-          <li><a onClick={() => scrollToSection('home')}>Home</a></li>
-          <li><a onClick={() => scrollToSection('about')}>About</a></li>
-          <li><a onClick={() => scrollToSection('projects')}>Projects</a></li>
-          <li><a onClick={() => scrollToSection('gallery')}>Gallery</a></li>
+          <li><a onClick={() => scrollToSection('home')}>Introduction</a></li>
+          <li><a onClick={() => scrollToSection('about')}>Work Experience</a></li>
+          <li><a onClick={() => scrollToSection('education')}>Education</a></li>
+          <li><a onClick={() => scrollToSection('projects')}>Freelance Project</a></li>
+          <li><a onClick={() => scrollToSection('gallery')}>Project Gallery</a></li>
         </ul>
       </div>
     </nav>

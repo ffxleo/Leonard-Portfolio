@@ -66,6 +66,8 @@ function GalleryPOS() {
                 <img 
                   src={process.env.PUBLIC_URL + item.src} 
                   alt={item.caption}
+                  onContextMenu={(e) => e.preventDefault()}
+                  draggable="false"
                   onError={(e) => {
                     e.target.style.display = 'none';
                     e.target.parentElement.innerHTML = `<span>Image ${item.id}</span>`;
@@ -94,6 +96,8 @@ function GalleryPOS() {
               src={process.env.PUBLIC_URL + selectedImage.src} 
               alt={selectedImage.caption}
               className="modal-image"
+              onContextMenu={(e) => e.preventDefault()}
+              draggable="false"
             />
             <p className="modal-caption">
               {selectedImage.caption}
