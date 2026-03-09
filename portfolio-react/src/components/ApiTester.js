@@ -18,10 +18,17 @@ function ApiTester() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: 'admin', password: 'admin123' })
       });
-      const data = await res.json();
-      setResponse(data);
-      if (data.token) {
-        setToken(data.token);
+      
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const data = await res.json();
+        setResponse(data);
+        if (data.token) {
+          setToken(data.token);
+        }
+      } else {
+        const text = await res.text();
+        setError(`Server returned non-JSON response: ${text.substring(0, 200)}`);
       }
     } catch (err) {
       setError(err.message);
@@ -39,8 +46,15 @@ function ApiTester() {
           'Content-Type': 'application/json'
         }
       });
-      const data = await res.json();
-      setResponse(data);
+      
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const data = await res.json();
+        setResponse(data);
+      } else {
+        const text = await res.text();
+        setError(`Server returned non-JSON response: ${text.substring(0, 200)}`);
+      }
     } catch (err) {
       setError(err.message);
     }
@@ -52,8 +66,15 @@ function ApiTester() {
     setError(null);
     try {
       const res = await fetch(`${API_BASE_URL}/health`);
-      const data = await res.json();
-      setResponse(data);
+      
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const data = await res.json();
+        setResponse(data);
+      } else {
+        const text = await res.text();
+        setError(`Server returned non-JSON response: ${text.substring(0, 200)}`);
+      }
     } catch (err) {
       setError(err.message);
     }
@@ -63,7 +84,7 @@ function ApiTester() {
   return (
     <div className="api-tester">
       <h3 className="api-title">Java Spring Boot REST API</h3>
-      <p className="api-subtitle">Live Interactive API Testing</p>
+      <p className="api-subtitle">Live Interactive API Testing (This is free instance will spin down with inactivity, which can delay requests by 50 seconds or more.)</p>
       
       <div className="api-info">
         <p className="api-url">Base URL: <code>{API_BASE_URL}</code></p>
