@@ -1,0 +1,11 @@
+target/
+!target/*.jar
+.git
+.gitignore
+*.md
+portfolio-react/
+node_modules/
+.idea/
+.vscode/
+*.iml
+*.log
