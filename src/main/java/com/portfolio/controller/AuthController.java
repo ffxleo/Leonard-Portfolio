@@ -24,7 +24,8 @@ public class AuthController {
         
         // Simple authentication (for demo purposes)
         // In production, validate against database
-        if ("leonard".equals(username) && "portfolio123".equals(password)) {
+        if (("leonard".equals(username) && "portfolio123".equals(password)) ||
+            ("admin".equals(username) && "admin123".equals(password))) {
             String token = jwtUtil.generateToken(username);
             
             Map<String, String> response = new HashMap<>();
@@ -35,7 +36,10 @@ public class AuthController {
             return response;
         }
         
-        throw new RuntimeException("Invalid credentials");
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("error", "Invalid credentials");
+        errorResponse.put("message", "Username or password is incorrect");
+        return errorResponse;
     }
     
     @GetMapping("/test")
