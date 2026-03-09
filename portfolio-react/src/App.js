@@ -10,6 +10,7 @@ import Gallery from './components/Gallery';
 import GalleryPOS from './components/GalleryPOS';
 import GalleryMobile from './components/GalleryMobile';
 import GalleryTimekeeping from './components/GalleryTimekeeping';
+import ApiTester from './components/ApiTester';
 import Footer from './components/Footer';
 import portfolioData from './data/portfolioData';
 
@@ -45,6 +46,7 @@ function App() {
         <section id="gallery">
           <div className="section">
             <h2 className="section-title">Project Gallery</h2>
+            <ApiTester />
             <GalleryMobile />
             <Gallery />
             <GalleryPOS />
