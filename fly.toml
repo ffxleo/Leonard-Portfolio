@@ -1,5 +1,5 @@
 # fly.toml app configuration file
-app = "leonard-portfolio"
+app = "leonard-portfolio-api"
 primary_region = "sin"
 
 [build]
