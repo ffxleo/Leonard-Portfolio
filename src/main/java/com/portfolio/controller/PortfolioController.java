@@ -73,7 +73,33 @@ public class PortfolioController {
     }
     
     @GetMapping("/health")
-    public String health() {
-        return "Portfolio API is running!";
+    public java.util.Map<String, String> health() {
+        return java.util.Map.of("status", "OK", "message", "Portfolio API is running!");
+    }
+    
+    // Portfolio endpoints with /portfolio prefix
+    @GetMapping("/portfolio/person")
+    public PortfolioData.Person getPortfolioPerson() {
+        return portfolioService.getPersonalInformation();
+    }
+    
+    @GetMapping("/portfolio/work-experience")
+    public List<PortfolioData.WorkExperience> getPortfolioWorkExperience() {
+        return portfolioService.getWorkExperience();
+    }
+    
+    @GetMapping("/portfolio/education")
+    public List<PortfolioData.Education> getPortfolioEducation() {
+        return portfolioService.getEducation();
+    }
+    
+    @GetMapping("/portfolio/skills")
+    public List<String> getPortfolioSkills() {
+        return portfolioService.getSkills();
+    }
+    
+    @GetMapping("/portfolio/projects")
+    public List<String> getPortfolioProjects() {
+        return portfolioService.getProjects();
     }
 }
