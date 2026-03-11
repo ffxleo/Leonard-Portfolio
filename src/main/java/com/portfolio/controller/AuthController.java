@@ -22,11 +22,15 @@ public class AuthController {
         String username = credentials.get("username");
         String password = credentials.get("password");
         
+        LogsController.addLog("🔐 Login attempt for user: " + username);
+        
         // Simple authentication (for demo purposes)
         // In production, validate against database
         if (("leonard".equals(username) && "portfolio123".equals(password)) ||
             ("admin".equals(username) && "admin123".equals(password))) {
             String token = jwtUtil.generateToken(username);
+            
+            LogsController.addLog("✅ Login successful for user: " + username);
             
             Map<String, String> response = new HashMap<>();
             response.put("token", token);
@@ -35,6 +39,8 @@ public class AuthController {
             
             return response;
         }
+        
+        LogsController.addLog("❌ Login failed for user: " + username);
         
         Map<String, String> errorResponse = new HashMap<>();
         errorResponse.put("error", "Invalid credentials");

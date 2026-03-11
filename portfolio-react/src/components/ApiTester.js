@@ -25,8 +25,8 @@ function ApiTester() {
       setLogs(prev => [...prev, `[${new Date().toLocaleTimeString()}] ${message}`]);
     };
     
-    addLog('🚀 Initiating server startup...');
-    addLog('📡 Sending wake-up request to Render.com');
+    addLog('🚀 Waking up server...');
+    addLog('📡 Sending request to Render.com');
     
     // Start countdown
     const countdownInterval = setInterval(() => {
@@ -39,15 +39,23 @@ function ApiTester() {
       });
     }, 1000);
     
-    // Simulate startup logs
-    setTimeout(() => addLog('🔧 Allocating server resources...'), 2000);
-    setTimeout(() => addLog('📦 Loading Docker container...'), 5000);
-    setTimeout(() => addLog('☕ Starting Java Virtual Machine...'), 10000);
-    setTimeout(() => addLog('🌱 Initializing Spring Boot application...'), 15000);
-    setTimeout(() => addLog('🔐 Configuring security and JWT...'), 20000);
-    setTimeout(() => addLog('🗄️ Setting up data services...'), 25000);
-    setTimeout(() => addLog('🌐 Starting web server on port 8080...'), 30000);
-    setTimeout(() => addLog('⏳ Waiting for health check...'), 35000);
+    // Function to fetch real logs from server
+    const fetchServerLogs = async () => {
+      try {
+        const res = await fetch(`${API_BASE_URL}/logs`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.logs && data.logs.length > 0) {
+            setLogs(data.logs);
+          }
+        }
+      } catch (err) {
+        // Server not ready yet
+      }
+    };
+    
+    // Poll for logs every 2 seconds
+    const logInterval = setInterval(fetchServerLogs, 2000);
     
     // Try to wake up the server
     try {
@@ -55,22 +63,33 @@ function ApiTester() {
       const contentType = res.headers.get('content-type');
       if (contentType && contentType.includes('application/json')) {
         const data = await res.json();
+        
+        // Fetch final logs
+        await fetchServerLogs();
+        
         addLog('✅ Server is ready!');
         addLog('🎉 Instance started successfully');
         setResponse(data);
         setInstanceStarting(false);
         setLoading(false);
         clearInterval(countdownInterval);
+        clearInterval(logInterval);
       }
     } catch (err) {
       addLog('⚠️ Server still starting, please wait...');
       // Server might still be starting, keep waiting
-      setTimeout(() => {
-        addLog('⏱️ Startup timeout reached');
-        addLog('💡 Try clicking "Login" to test connection');
+      setTimeout(async () => {
+        try {
+          await fetchServerLogs();
+          addLog('✅ Server ready!');
+        } catch (e) {
+          addLog('⏱️ Startup timeout reached');
+          addLog('💡 Try clicking "Login" to test connection');
+        }
         setInstanceStarting(false);
         setLoading(false);
         clearInterval(countdownInterval);
+        clearInterval(logInterval);
       }, 60000);
     }
   };
