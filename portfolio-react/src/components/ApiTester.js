@@ -9,6 +9,10 @@ function ApiTester() {
   const [instanceStarting, setInstanceStarting] = useState(false);
   const [countdown, setCountdown] = useState(60);
   const [logs, setLogs] = useState([]);
+  const [showOtpForm, setShowOtpForm] = useState(false);
+  const [email, setEmail] = useState('');
+  const [otp, setOtp] = useState('');
+  const [generatedOtp, setGeneratedOtp] = useState('');
 
   const API_BASE_URL = 'https://leonard-portfolio.onrender.com/api';
 
@@ -102,6 +106,59 @@ function ApiTester() {
     setLoading(false);
   };
 
+  const sendOtp = async () => {
+    if (!email) {
+      setError('Please enter an email address');
+      return;
+    }
+    
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch(`${API_BASE_URL}/auth/send-otp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      
+      const data = await res.json();
+      setResponse(data);
+      if (data.otp) {
+        setGeneratedOtp(data.otp);
+      }
+    } catch (err) {
+      setError(err.message);
+    }
+    setLoading(false);
+  };
+
+  const verifyOtp = async () => {
+    if (!email || !otp) {
+      setError('Please enter email and OTP');
+      return;
+    }
+    
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch(`${API_BASE_URL}/auth/verify-otp`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, otp })
+      });
+      
+      const data = await res.json();
+      setResponse(data);
+      if (data.token) {
+        setToken(data.token);
+        setShowOtpForm(false);
+      }
+    } catch (err) {
+      setError(err.message);
+    }
+    setLoading(false);
+  };
+
   const testEndpoint = async (endpoint) => {
     setLoading(true);
     setError(null);
@@ -144,7 +201,10 @@ function ApiTester() {
           {instanceStarting ? `Starting... ${countdown}s` : 'Start Instance'}
         </button>
         <button onClick={testLogin} disabled={loading || instanceStarting} className="api-btn login-btn">
-          Login (Get Token)
+          Login (Username/Password)
+        </button>
+        <button onClick={() => setShowOtpForm(!showOtpForm)} disabled={loading || instanceStarting} className="api-btn otp-btn">
+          {showOtpForm ? 'Hide OTP Form' : 'Login with OTP'}
         </button>
         <button onClick={() => testEndpoint('/portfolio/person')} disabled={loading || !token || instanceStarting} className="api-btn">
           Get Person
@@ -162,6 +222,47 @@ function ApiTester() {
           Get Projects
         </button>
       </div>
+
+      {showOtpForm && (
+        <div className="otp-form">
+          <h4 className="otp-form-title">🔐 OTP Authentication Demo</h4>
+          <div className="form-group">
+            <label>Email Address:</label>
+            <input 
+              type="email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="form-input"
+            />
+            <button onClick={sendOtp} disabled={loading} className="form-btn">
+              Send OTP
+            </button>
+          </div>
+          
+          {generatedOtp && (
+            <div className="otp-display">
+              <p className="otp-note">📧 OTP sent! (Demo mode - OTP shown below)</p>
+              <p className="otp-code">Your OTP: <strong>{generatedOtp}</strong></p>
+            </div>
+          )}
+          
+          <div className="form-group">
+            <label>Enter OTP:</label>
+            <input 
+              type="text" 
+              value={otp} 
+              onChange={(e) => setOtp(e.target.value)}
+              placeholder="Enter 6-digit OTP"
+              maxLength="6"
+              className="form-input"
+            />
+            <button onClick={verifyOtp} disabled={loading} className="form-btn verify-btn">
+              Verify OTP
+            </button>
+          </div>
+        </div>
+      )}
 
       {loading && !instanceStarting && (
         <div className="loading">
