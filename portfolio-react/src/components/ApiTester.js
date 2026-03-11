@@ -6,8 +6,49 @@ function ApiTester() {
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [instanceStarting, setInstanceStarting] = useState(false);
+  const [countdown, setCountdown] = useState(60);
 
   const API_BASE_URL = 'https://leonard-portfolio.onrender.com/api';
+
+  const startInstance = async () => {
+    setInstanceStarting(true);
+    setLoading(true);
+    setError(null);
+    setCountdown(60);
+    setResponse(null);
+    
+    // Start countdown
+    const countdownInterval = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          clearInterval(countdownInterval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    
+    // Try to wake up the server
+    try {
+      const res = await fetch(`${API_BASE_URL}/health`);
+      const contentType = res.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const data = await res.json();
+        setResponse(data);
+        setInstanceStarting(false);
+        setLoading(false);
+        clearInterval(countdownInterval);
+      }
+    } catch (err) {
+      // Server might still be starting, keep waiting
+      setTimeout(() => {
+        setInstanceStarting(false);
+        setLoading(false);
+        clearInterval(countdownInterval);
+      }, 60000);
+    }
+  };
 
   const testLogin = async () => {
     setLoading(true);
@@ -61,30 +102,10 @@ function ApiTester() {
     setLoading(false);
   };
 
-  const testHealth = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch(`${API_BASE_URL}/health`);
-      
-      const contentType = res.headers.get('content-type');
-      if (contentType && contentType.includes('application/json')) {
-        const data = await res.json();
-        setResponse(data);
-      } else {
-        const text = await res.text();
-        setError(`Server returned non-JSON response: ${text.substring(0, 200)}`);
-      }
-    } catch (err) {
-      setError(err.message);
-    }
-    setLoading(false);
-  };
-
   return (
     <div className="api-tester">
       <h3 className="api-title">Java Spring Boot REST API</h3>
-      <p className="api-subtitle">Live Interactive API Testing (This is free instance will spin down with inactivity, which can delay requests by 50 seconds or more.)</p>
+      <p className="api-subtitle">Live Interactive API Testing</p>
       
       <div className="api-info">
         <p className="api-url">Base URL: <code>{API_BASE_URL}</code></p>
@@ -94,30 +115,43 @@ function ApiTester() {
       </div>
 
       <div className="api-buttons">
-        <button onClick={testHealth} disabled={loading} className="api-btn health-btn">
-          Server Check
+        <button onClick={startInstance} disabled={loading || instanceStarting} className="api-btn start-btn">
+          {instanceStarting ? `Starting... ${countdown}s` : 'Start Instance'}
         </button>
-        <button onClick={testLogin} disabled={loading} className="api-btn login-btn">
+        <button onClick={testLogin} disabled={loading || instanceStarting} className="api-btn login-btn">
           Login (Get Token)
         </button>
-        <button onClick={() => testEndpoint('/portfolio/person')} disabled={loading || !token} className="api-btn">
+        <button onClick={() => testEndpoint('/portfolio/person')} disabled={loading || !token || instanceStarting} className="api-btn">
           Get Person
         </button>
-        <button onClick={() => testEndpoint('/portfolio/work-experience')} disabled={loading || !token} className="api-btn">
+        <button onClick={() => testEndpoint('/portfolio/work-experience')} disabled={loading || !token || instanceStarting} className="api-btn">
           Get Work Experience
         </button>
-        <button onClick={() => testEndpoint('/portfolio/education')} disabled={loading || !token} className="api-btn">
+        <button onClick={() => testEndpoint('/portfolio/education')} disabled={loading || !token || instanceStarting} className="api-btn">
           Get Education
         </button>
-        <button onClick={() => testEndpoint('/portfolio/skills')} disabled={loading || !token} className="api-btn">
+        <button onClick={() => testEndpoint('/portfolio/skills')} disabled={loading || !token || instanceStarting} className="api-btn">
           Get Skills
         </button>
-        <button onClick={() => testEndpoint('/portfolio/projects')} disabled={loading || !token} className="api-btn">
+        <button onClick={() => testEndpoint('/portfolio/projects')} disabled={loading || !token || instanceStarting} className="api-btn">
           Get Projects
         </button>
       </div>
 
-      {loading && <div className="loading">Loading...</div>}
+      {loading && !instanceStarting && (
+        <div className="loading">
+          <div className="spinner"></div>
+          <span>Loading...</span>
+        </div>
+      )}
+      
+      {instanceStarting && (
+        <div className="instance-starting">
+          <div className="spinner-large"></div>
+          <p className="starting-message">Starting server instance...</p>
+          <p className="starting-info">Free tier servers spin down after inactivity. Estimated time: ~{countdown} seconds</p>
+        </div>
+      )}
       
       {error && (
         <div className="error-box">
