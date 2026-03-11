@@ -8,6 +8,7 @@ function ApiTester() {
   const [error, setError] = useState(null);
   const [instanceStarting, setInstanceStarting] = useState(false);
   const [countdown, setCountdown] = useState(60);
+  const [logs, setLogs] = useState([]);
 
   const API_BASE_URL = 'https://leonard-portfolio.onrender.com/api';
 
@@ -17,6 +18,15 @@ function ApiTester() {
     setError(null);
     setCountdown(60);
     setResponse(null);
+    setLogs([]);
+    
+    // Add initial log
+    const addLog = (message) => {
+      setLogs(prev => [...prev, `[${new Date().toLocaleTimeString()}] ${message}`]);
+    };
+    
+    addLog('🚀 Initiating server startup...');
+    addLog('📡 Sending wake-up request to Render.com');
     
     // Start countdown
     const countdownInterval = setInterval(() => {
@@ -29,20 +39,35 @@ function ApiTester() {
       });
     }, 1000);
     
+    // Simulate startup logs
+    setTimeout(() => addLog('🔧 Allocating server resources...'), 2000);
+    setTimeout(() => addLog('📦 Loading Docker container...'), 5000);
+    setTimeout(() => addLog('☕ Starting Java Virtual Machine...'), 10000);
+    setTimeout(() => addLog('🌱 Initializing Spring Boot application...'), 15000);
+    setTimeout(() => addLog('🔐 Configuring security and JWT...'), 20000);
+    setTimeout(() => addLog('🗄️ Setting up data services...'), 25000);
+    setTimeout(() => addLog('🌐 Starting web server on port 8080...'), 30000);
+    setTimeout(() => addLog('⏳ Waiting for health check...'), 35000);
+    
     // Try to wake up the server
     try {
       const res = await fetch(`${API_BASE_URL}/health`);
       const contentType = res.headers.get('content-type');
       if (contentType && contentType.includes('application/json')) {
         const data = await res.json();
+        addLog('✅ Server is ready!');
+        addLog('🎉 Instance started successfully');
         setResponse(data);
         setInstanceStarting(false);
         setLoading(false);
         clearInterval(countdownInterval);
       }
     } catch (err) {
+      addLog('⚠️ Server still starting, please wait...');
       // Server might still be starting, keep waiting
       setTimeout(() => {
+        addLog('⏱️ Startup timeout reached');
+        addLog('💡 Try clicking "Login" to test connection');
         setInstanceStarting(false);
         setLoading(false);
         clearInterval(countdownInterval);
@@ -150,6 +175,17 @@ function ApiTester() {
           <div className="spinner-large"></div>
           <p className="starting-message">Starting server instance...</p>
           <p className="starting-info">Free tier servers spin down after inactivity. Estimated time: ~{countdown} seconds</p>
+          
+          {logs.length > 0 && (
+            <div className="startup-logs">
+              <div className="logs-header">📋 Startup Logs</div>
+              <div className="logs-content">
+                {logs.map((log, index) => (
+                  <div key={index} className="log-entry">{log}</div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
       
