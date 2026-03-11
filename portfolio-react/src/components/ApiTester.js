@@ -230,6 +230,7 @@ function ApiTester() {
         <span className="tech-badge">JWT Auth</span>
         <span className="tech-badge">REST API</span>
         <span className="tech-badge">Maven</span>
+        <span className="tech-badge">Docker</span>
       </div>
     </div>
   );
