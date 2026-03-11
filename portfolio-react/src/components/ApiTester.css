@@ -281,3 +281,90 @@
     font-size: 0.75rem;
   }
 }
+
+/* Token Input Section */
+.token-input-section {
+  background: rgba(15, 23, 42, 0.5);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.token-label {
+  display: block;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.token-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.token-input {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #f1f5f9;
+  padding: 12px 40px 12px 15px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.token-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.token-input::placeholder {
+  color: #64748b;
+}
+
+.clear-token-btn {
+  position: absolute;
+  right: 10px;
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.clear-token-btn:hover {
+  background: rgba(239, 68, 68, 0.4);
+  transform: scale(1.1);
+}
+
+.token-hint {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin: 10px 0 0 0;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .token-input {
+    font-size: 0.75rem;
+    padding: 10px 35px 10px 12px;
+  }
+  
+  .token-hint {
+    font-size: 0.8rem;
+  }
+}

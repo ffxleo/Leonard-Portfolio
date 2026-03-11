@@ -158,6 +158,35 @@ function ApiTester() {
         )}
       </div>
 
+      {/* Token Input Field */}
+      <div className="token-input-section">
+        <label htmlFor="token-input" className="token-label">
+          JWT Token (Edit to test invalid tokens):
+        </label>
+        <div className="token-input-wrapper">
+          <input
+            id="token-input"
+            type="text"
+            value={token}
+            onChange={(e) => setToken(e.target.value)}
+            placeholder="Login to get token or paste your own token here..."
+            className="token-input"
+          />
+          {token && (
+            <button 
+              onClick={() => setToken('')} 
+              className="clear-token-btn"
+              title="Clear token"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+        <p className="token-hint">
+          💡 Tip: Modify the token to test authentication errors (401 Unauthorized)
+        </p>
+      </div>
+
       <div className="api-buttons">
         <button onClick={startInstance} disabled={loading || instanceStarting} className="api-btn start-btn">
           {instanceStarting ? `Starting... ${countdown}s` : 'Start Instance'}
