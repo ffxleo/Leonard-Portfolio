@@ -19,7 +19,8 @@ const portfolioData = {
       dateRange: "July 2024 – Present",
       responsibilities: [
         "Insurely Mobile Application Android and IOS (.Net WCF C# Rest APIs .Netcore, MSSQL, QT Framework, C++, Python, Java)",
-        "Managing Google Playstore and Apple Appstore Application Version Updates"
+        "Managing Google Playstore and Apple Appstore Application Version Updates",
+        "Managing/Developing External and Internal API'.s"
       ]
     },
     {
@@ -28,7 +29,8 @@ const portfolioData = {
       position: ".NET Developer",
       dateRange: "March 2023 – July 2024",
       responsibilities: [
-        "Insurely Mobile Application (Android Development and Internal/External API'S) - OTP authentication, account management, dashboard, email notification (.Net WCF C# Rest APIs, MSSQL, QT Framework, C++, Python)"
+        "Insurely Mobile Application (Android Development and Internal/External API'S) - OTP authentication, account management, dashboard, email notification (.Net WCF C# Rest APIs, MSSQL, QT Framework, C++, Python)",
+        "Managing/Developing Internal API's."
       ]
     },
     {
