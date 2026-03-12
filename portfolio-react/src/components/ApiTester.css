@@ -510,3 +510,39 @@
 .token-masked {
   color: #f59e0b;
 }
+
+/* Token Expired Warning */
+.token-expired-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 2px solid rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.token-expired-warning strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #f59e0b;
+}
+
+.token-expired-warning p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #fcd34d;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    border-color: rgba(245, 158, 11, 0.5);
+    background: rgba(245, 158, 11, 0.1);
+  }
+  50% {
+    border-color: rgba(245, 158, 11, 0.8);
+    background: rgba(245, 158, 11, 0.15);
+  }
+}

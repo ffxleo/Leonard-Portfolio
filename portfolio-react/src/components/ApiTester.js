@@ -12,6 +12,7 @@ function ApiTester() {
   const [lastRequest, setLastRequest] = useState(null);
   const [tokenExpiry, setTokenExpiry] = useState(null);
   const [timeRemaining, setTimeRemaining] = useState(0);
+  const [tokenExpired, setTokenExpired] = useState(false);
 
   const API_BASE_URL = 'https://leonard-portfolio.onrender.com/api';
   
@@ -27,6 +28,7 @@ function ApiTester() {
       if (remaining === 0) {
         setToken('');
         setTokenExpiry(null);
+        setTokenExpired(true);
         clearInterval(interval);
       }
     }, 1000);
@@ -119,6 +121,7 @@ function ApiTester() {
   const testLogin = async () => {
     setLoading(true);
     setError(null);
+    setTokenExpired(false);
     try {
       const res = await fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
@@ -276,6 +279,13 @@ function ApiTester() {
         <div className="loading">
           <div className="spinner"></div>
           <span>Loading...</span>
+        </div>
+      )}
+      
+      {tokenExpired && (
+        <div className="token-expired-warning">
+          <strong>⚠️ Token Expired!</strong>
+          <p>Your JWT token has expired. Please click "Login (Get Token)" to get a new token.</p>
         </div>
       )}
       
