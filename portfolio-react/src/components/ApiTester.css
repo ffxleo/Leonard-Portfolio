@@ -45,6 +45,21 @@
   margin: 10px 0 0 0;
 }
 
+.token-status-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.token-expiry {
+  color: #f59e0b;
+  font-weight: 600;
+  margin: 10px 0 0 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
 .api-buttons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));

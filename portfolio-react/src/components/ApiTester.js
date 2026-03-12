@@ -10,8 +10,29 @@ function ApiTester() {
   const [countdown, setCountdown] = useState(60);
   const [logs, setLogs] = useState([]);
   const [lastRequest, setLastRequest] = useState(null);
+  const [tokenExpiry, setTokenExpiry] = useState(null);
+  const [timeRemaining, setTimeRemaining] = useState(0);
 
   const API_BASE_URL = 'https://leonard-portfolio.onrender.com/api';
+  
+  // Token expiration countdown
+  React.useEffect(() => {
+    if (!tokenExpiry) return;
+    
+    const interval = setInterval(() => {
+      const now = Date.now();
+      const remaining = Math.max(0, Math.floor((tokenExpiry - now) / 1000));
+      setTimeRemaining(remaining);
+      
+      if (remaining === 0) {
+        setToken('');
+        setTokenExpiry(null);
+        clearInterval(interval);
+      }
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, [tokenExpiry]);
 
   const startInstance = async () => {
     setInstanceStarting(true);
@@ -111,6 +132,10 @@ function ApiTester() {
         setResponse(data);
         if (data.token) {
           setToken(data.token);
+          // Set token expiry (10 minutes from now)
+          const expiresIn = parseInt(data.expiresIn || '600');
+          setTokenExpiry(Date.now() + (expiresIn * 1000));
+          setTimeRemaining(expiresIn);
         }
       } else {
         const text = await res.text();
@@ -183,7 +208,14 @@ function ApiTester() {
       <div className="api-info">
         <p className="api-url">Base URL: <code>{API_BASE_URL}</code></p>
         {token && (
-          <p className="token-status">✓ Authenticated</p>
+          <div className="token-status-wrapper">
+            <p className="token-status">✓ Authenticated</p>
+            {timeRemaining > 0 && (
+              <p className="token-expiry">
+                ⏱️ Token expires in: {Math.floor(timeRemaining / 60)}:{String(timeRemaining % 60).padStart(2, '0')}
+              </p>
+            )}
+          </div>
         )}
       </div>
 
