@@ -49,7 +49,9 @@ public class DataInitializer implements CommandLineRunner {
             "July 2024 – Present",
             Arrays.asList(
                 "Insurely Mobile Application Android and IOS (.Net WCF C# Rest APIs .Netcore, MSSQL, QT Framework, C++, Python, Java)",
-                "Managing Google Playstore and Apple Appstore Application Version Updates"
+                "Managing Google Playstore and Apple Appstore Application Version Updates",
+                "Managing/Developing External and Internal API'.s"
+
             )
         );
         
@@ -59,7 +61,8 @@ public class DataInitializer implements CommandLineRunner {
             ".NET Developer",
             "March 2023 – July 2024",
             Arrays.asList(
-                "Insurely Mobile Application - OTP authentication, account management, dashboard, email notification (.Net WCF C# Rest APIs, MSSQL, QT Framework, C++, Python)"
+                "Insurely Mobile Application - OTP authentication, account management, dashboard, email notification (.Net WCF C# Rest APIs, MSSQL, QT Framework, C++, Python)",
+                "Managing/Developing Internal API's"
             )
         );
         
