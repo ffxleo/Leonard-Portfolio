@@ -298,7 +298,7 @@ function ApiTester() {
             <div className="request-line">
               <span className="request-label">Token:</span>
               <div className="request-value-with-copy">
-                <code className="request-value token-masked">{token.substring(0, 30)}...{token.substring(token.length - 10)}</code>
+                <code className="request-value token-masked">{token}</code>
                 <button onClick={copyToken} className="copy-inline-btn" title="Copy Token">
                   📋
                 </button>
