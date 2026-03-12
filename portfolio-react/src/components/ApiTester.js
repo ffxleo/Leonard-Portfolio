@@ -165,15 +165,14 @@ function ApiTester() {
     });
   };
   
-  const copyPostmanRequest = () => {
-    if (!lastRequest) return;
-    
-    const postmanFormat = `${lastRequest.method} ${lastRequest.url}
-Headers:
-Authorization: Bearer ${token}
-Content-Type: application/json`;
-    
-    copyToClipboard(postmanFormat);
+  const copyUrl = () => {
+    if (lastRequest) {
+      copyToClipboard(lastRequest.url);
+    }
+  };
+  
+  const copyToken = () => {
+    copyToClipboard(token);
   };
 
   return (
@@ -277,9 +276,6 @@ Content-Type: application/json`;
         <div className="request-details-box">
           <div className="request-header">
             <span>📤 Request Details</span>
-            <button onClick={copyPostmanRequest} className="copy-btn" title="Copy for Postman">
-              📋 Copy for Postman
-            </button>
           </div>
           <div className="request-content">
             <div className="request-line">
@@ -288,15 +284,25 @@ Content-Type: application/json`;
             </div>
             <div className="request-line">
               <span className="request-label">URL:</span>
-              <code className="request-value">{lastRequest.url}</code>
+              <div className="request-value-with-copy">
+                <code className="request-value">{lastRequest.url}</code>
+                <button onClick={copyUrl} className="copy-inline-btn" title="Copy URL">
+                  📋
+                </button>
+              </div>
             </div>
             <div className="request-line">
-              <span className="request-label">Authorization:</span>
-              <code className="request-value">Bearer {token.substring(0, 20)}...{token.substring(token.length - 10)}</code>
+              <span className="request-label">Auth Type:</span>
+              <code className="request-value">Bearer Token</code>
             </div>
             <div className="request-line">
-              <span className="request-label">Content-Type:</span>
-              <code className="request-value">application/json</code>
+              <span className="request-label">Token:</span>
+              <div className="request-value-with-copy">
+                <code className="request-value token-masked">{token.substring(0, 30)}...{token.substring(token.length - 10)}</code>
+                <button onClick={copyToken} className="copy-inline-btn" title="Copy Token">
+                  📋
+                </button>
+              </div>
             </div>
           </div>
         </div>
