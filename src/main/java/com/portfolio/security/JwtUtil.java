@@ -17,7 +17,7 @@ public class JwtUtil {
     @Value("${jwt.secret:my-default-secret-key-for-development-only-change-in-production}")
     private String jwtSecret;
     
-    private final long EXPIRATION_TIME = 86400000; // 24 hours
+    private final long EXPIRATION_TIME = 600000; // 10 minutes (600,000 ms)
     
     private Key getSigningKey() {
         byte[] keyBytes = jwtSecret.getBytes(StandardCharsets.UTF_8);

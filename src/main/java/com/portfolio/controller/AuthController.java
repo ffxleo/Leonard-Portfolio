@@ -36,6 +36,7 @@ public class AuthController {
             response.put("token", token);
             response.put("message", "Login successful");
             response.put("username", username);
+            response.put("expiresIn", "600"); // 10 minutes in seconds
             
             return response;
         }
