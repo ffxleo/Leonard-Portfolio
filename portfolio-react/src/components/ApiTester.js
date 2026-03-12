@@ -276,6 +276,9 @@ function ApiTester() {
         <div className="request-details-box">
           <div className="request-header">
             <span>📤 Request Details</span>
+            <button onClick={() => { setLastRequest(null); setResponse(null); }} className="clear-btn">
+              Clear
+            </button>
           </div>
           <div className="request-content">
             <div className="request-line">
@@ -312,7 +315,6 @@ function ApiTester() {
         <div className="response-box">
           <div className="response-header">
             <span>Response:</span>
-            <button onClick={() => setResponse(null)} className="clear-btn">Clear</button>
           </div>
           <pre>{JSON.stringify(response, null, 2)}</pre>
         </div>
