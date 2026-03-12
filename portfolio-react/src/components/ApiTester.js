@@ -9,6 +9,7 @@ function ApiTester() {
   const [instanceStarting, setInstanceStarting] = useState(false);
   const [countdown, setCountdown] = useState(60);
   const [logs, setLogs] = useState([]);
+  const [lastRequest, setLastRequest] = useState(null);
 
   const API_BASE_URL = 'https://leonard-portfolio.onrender.com/api';
 
@@ -124,6 +125,18 @@ function ApiTester() {
   const testEndpoint = async (endpoint) => {
     setLoading(true);
     setError(null);
+    
+    // Store request details
+    const requestDetails = {
+      method: 'GET',
+      url: `${API_BASE_URL}${endpoint}`,
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    };
+    setLastRequest(requestDetails);
+    
     try {
       const res = await fetch(`${API_BASE_URL}${endpoint}`, {
         headers: {
@@ -144,6 +157,23 @@ function ApiTester() {
       setError(err.message);
     }
     setLoading(false);
+  };
+  
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Copied to clipboard!');
+    });
+  };
+  
+  const copyPostmanRequest = () => {
+    if (!lastRequest) return;
+    
+    const postmanFormat = `${lastRequest.method} ${lastRequest.url}
+Headers:
+Authorization: Bearer ${token}
+Content-Type: application/json`;
+    
+    copyToClipboard(postmanFormat);
   };
 
   return (
@@ -240,6 +270,35 @@ function ApiTester() {
       {error && (
         <div className="error-box">
           <strong>Error:</strong> {error}
+        </div>
+      )}
+
+      {lastRequest && (
+        <div className="request-details-box">
+          <div className="request-header">
+            <span>📤 Request Details</span>
+            <button onClick={copyPostmanRequest} className="copy-btn" title="Copy for Postman">
+              📋 Copy for Postman
+            </button>
+          </div>
+          <div className="request-content">
+            <div className="request-line">
+              <span className="request-label">Method:</span>
+              <code className="request-value">{lastRequest.method}</code>
+            </div>
+            <div className="request-line">
+              <span className="request-label">URL:</span>
+              <code className="request-value">{lastRequest.url}</code>
+            </div>
+            <div className="request-line">
+              <span className="request-label">Authorization:</span>
+              <code className="request-value">Bearer {token.substring(0, 20)}...{token.substring(token.length - 10)}</code>
+            </div>
+            <div className="request-line">
+              <span className="request-label">Content-Type:</span>
+              <code className="request-value">application/json</code>
+            </div>
+          </div>
         </div>
       )}
 
