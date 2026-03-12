@@ -224,7 +224,7 @@ function ApiTester() {
 
       <div className="api-buttons">
         <button onClick={startInstance} disabled={loading || instanceStarting} className="api-btn start-btn">
-          {instanceStarting ? `Starting... ${countdown}s` : 'Start Instance'}
+          {instanceStarting ? (countdown > 0 ? `Starting... ${countdown}s` : 'Starting... Please wait') : 'Start Instance'}
         </button>
         <button onClick={testLogin} disabled={loading || instanceStarting} className="api-btn login-btn">
           Login (Get Token)
@@ -293,7 +293,9 @@ function ApiTester() {
         <div className="instance-starting">
           <div className="spinner-large"></div>
           <p className="starting-message">Starting server instance...</p>
-          <p className="starting-info">Free tier servers spin down after inactivity. Estimated time: ~{countdown} seconds</p>
+          <p className="starting-info">
+            Free tier servers spin down after inactivity. Estimated time: ~{countdown > 0 ? `${countdown} seconds` : 'Please wait...'}
+          </p>
           
           {logs.length > 0 && (
             <div className="startup-logs">
