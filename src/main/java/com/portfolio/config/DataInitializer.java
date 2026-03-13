@@ -36,7 +36,6 @@ public class DataInitializer implements CommandLineRunner {
             "leonardorsolinolalican@gmail.com",
             "09655791871",
             "9003 Reposa Subdivision Purok 5, Yukos, Nagcarlan Laguna",
-            "December 28, 1991",
             "To be involved in work where I can give my abilities, to give my service and enhance my skills to meet company goals and objective with full of integrity and honesty."
         );
         personRepository.save(person);
