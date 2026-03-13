@@ -45,17 +45,15 @@ public class PortfolioData {
         private String email;
         private String phone;
         private String address;
-        private String birthDate;
         private String objective;
         
         public Person() {}
         
-        public Person(String name, String email, String phone, String address, String birthDate, String objective) {
+        public Person(String name, String email, String phone, String address, String objective) {
             this.name = name;
             this.email = email;
             this.phone = phone;
             this.address = address;
-            this.birthDate = birthDate;
             this.objective = objective;
         }
         
@@ -71,9 +69,6 @@ public class PortfolioData {
         
         public String getAddress() { return address; }
         public void setAddress(String address) { this.address = address; }
-        
-        public String getBirthDate() { return birthDate; }
-        public void setBirthDate(String birthDate) { this.birthDate = birthDate; }
         
         public String getObjective() { return objective; }
         public void setObjective(String objective) { this.objective = objective; }

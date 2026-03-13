@@ -38,7 +38,6 @@ public class PortfolioService {
             person.getEmail(),
             person.getPhone(),
             person.getAddress(),
-            person.getBirthDate(),
             person.getObjective()
         );
     }
