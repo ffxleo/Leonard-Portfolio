@@ -3,11 +3,6 @@ import './Header.css';
 
 function Header({ person }) {
   
-  const handleContactClick = () => {
-    // show contact info popup
-    alert(`Contact Number: ${person.phone}\nEmail: ${person.email}`);
-  };
-
   return (
     <header className="header">
       <div className="header-content">
@@ -26,9 +21,13 @@ function Header({ person }) {
             <p>Email: {person.email}</p>
           </div>
           
-          <button className="cta-button" onClick={handleContactClick}>
-            Say Hello!
-          </button>
+          <a
+            href={process.env.PUBLIC_URL + "/resume/LeonardLalicanResume2026.pdf"}
+            download="LeonardLalicanResume2026.pdf"
+            className="cta-button"
+          >
+            Download CV
+          </a>
         </div>
         
         <div className="hero-right">
